@@ -1,0 +1,11 @@
+<ul class="breadcrumbs">
+  <li><%= link_to "Websites", :controller => "websites", :action => "index" %></li>
+</ul>
+<h1><%= @website.name %></h1>
+<h2 class="domain"><%= @website.domain %></h2>
+
+<%= link_to raw('<i class="icon-pencil"></i> Edit'), edit_website_path(@website), :class => "button" %>
+<%= link_to raw('<i class="icon-remove"></i> Delete'), @website, method: :delete, data: { confirm: 'Are you sure?' }, :class => "button" %>
+
+<%= render :partial => "achievement_list", :locals => { :achievements => Achievement.find(:all, :conditions => { :website_id => @website.id }) } %>
+<%= render :partial => "new_achievement", :locals => { :achievement => Achievement.new(:website_id => @website.id) } %>

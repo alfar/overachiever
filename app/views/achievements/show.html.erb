@@ -1,0 +1,68 @@
+<ul class="breadcrumbs">
+  <li><%= link_to "Websites", :controller => "websites", :action => "index" %></li>
+  <li><%= link_to @achievement.website.name, :controller => "websites", :action => "show", :id => @achievement.website.id %></li>
+</ul>
+<h1><%= @achievement.name %></h1>
+
+<%= link_to raw('<i class="icon-pencil"></i> Edit'), edit_achievement_path(@achievement), :class => "button" %>
+<%= link_to raw('<i class="icon-remove"></i> Delete'), @achievement, method: :delete, data: { confirm: 'Are you sure?' }, :class => "button" %>
+
+<section class="description">
+  <%= simple_format(@achievement.description) %>
+</section>
+
+<section class="count">
+  <p>A user is rewarded this achievement when she has <%= @achievement.record_count %> records.</p>
+</section>
+
+<% if (@achievement.website.owner == current_user.id) && (!@achievement.notes.empty?) %>
+<section class="notes">
+  <h1>Notes</h1>
+  <%= simple_format(@achievement.notes) %>
+</section>
+<% end %>
+
+<% if @awards.empty? %>
+<section class="awarded_to">
+<h1>Awarded To</h1>
+<p><em>No one has earned this achievement yet.</em></p>
+</section>
+<% else %>
+<section class="awarded_to">
+<h1>Awarded To</h1>
+<ul>
+<% @awards.each do |award| %>
+<li><%= link_to award.to, "/websites/" + @achievement.website_id.to_s + "/" + award.to %> <span class="delete"><%= link_to raw('<i class="icon-remove"></i>'), "/achievements/" + @achievement.id.to_s + "/award/" + award.to + "/delete", data: { confirm: 'Are you sure?' }, :class => "remove" %></span></li>
+<% end %> 
+</ul>
+</section>
+<% end %>
+
+<section class="award_form">
+  <p>Award this achievement to users manually by entering them here. Award to multiple users at once by entering a comma-separated list.</p>
+  <% if @achievement.website.owner == current_user.id %>
+    <%= form_tag :controller => "achievements", :action => "award", :method => "get" do %>
+      <%= text_field_tag :to, '', :class => "award_to" %>
+      <%= hidden_field_tag :achievement_id, @achievement.id %>
+      <%= submit_tag "Award" %>
+    <% end %>
+  <% end %>
+</section>
+
+<section class="help">
+  <h1>Technical Stuff</h1>
+  <% if @achievement.record_count > 1 %>
+  <p>We'll award this achievement to a user when you've recorded <%= @achievement.record_count %> events. You can determine what counts; just send a request to this URL:</p>
+  <p><code>http://overachiever.co/achievements/<%= @achievement.id %>/record/<strong>USER</strong>.json</code></p>
+  <p><strong>user</strong> is determined by you. It should be a unique identifier for each of your website's users. Maybe that means an ID number, an email address, a screen handle, an IP address, or something else. Whatever you use on your website to uniquely identify your users, we'll use it, too.</p>
+  <p>With this URL, you can focus on what are the conditions that count as activity towards this achievement; we'll handle tracking when each user has done it enough times to earn the achievement.</p>
+  <% else %>
+  <p>We'll award this achievement to a user when send a request to this URL:</p>
+  <p><code>http://overachiever.co/achievements/<%= @achievement.id %>/record/<strong>USER</strong>.json</code></p>
+  <p><strong>user</strong> is determined by you. It should be a unique identifier for each of your website's users. Maybe that means an ID number, an email address, a screen handle, an IP address, or something else. Whatever you use on your website to uniquely identify your users, we'll use it, too.</p>
+  <% end %>
+  <p>You can use this URL to get a list of the users who have earned this achievement:</p>
+  <p><code>http://overachiever.co/achievements/<%= @achievement.id %>.json</code></p>
+  <p>You can check to see if an individual user has earned this award by checking this URL:</p>
+  <p><code>http://overachiever.co/achievements/<%= @achievement.id %>/check/<strong>USER</strong>.json</code></p>
+</section>

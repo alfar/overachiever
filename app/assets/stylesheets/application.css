@@ -1,0 +1,348 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require font-awesome
+ *= require_self
+ *= require_tree .
+ */
+
+body {
+  padding: 5%;
+}
+
+section {
+  margin-top: 1em;
+}
+
+#logo {
+  margin-top: 0.25  em;
+  border-bottom: 1px solid #ffc982;
+  padding-bottom: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+#logo a {
+  color: #ff9000;
+  text-decoration: none;
+  line-height: 1;
+  text-align: center;
+  display: block;
+  width: 100%;
+  background: url(/assets/laurel-left.png) no-repeat top left;
+  background-size: 11%;
+  padding-left: 2%;
+}
+
+#logo a:hover {
+  color: #ffa000;
+}
+
+h1 {
+  text-align: center;
+  line-height: 1;
+}
+
+code {
+  margin: 1em 0;
+}
+
+.alert ul,
+ul.breadcrumbs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul.breadcrumbs li {
+  display: inline;
+}
+
+ul.breadcrumbs li:after {
+  content: " » ";
+}
+
+#homepage_text {
+  overflow: auto;
+  padding-top: 1em;
+}
+
+#homepage_text section {
+  text-align: left;
+  padding-bottom: 1em;
+}
+
+#homepage_text section.pitch {
+  text-align: center;
+  font-size: 1.5em;
+  line-height: 1.2;
+}
+
+@media (min-width: 500px) {
+  #homepage_text section {
+    width: 28%;
+    margin: 0 2%;
+    float: left;
+  }
+  
+  #homepage_text section.pitch {
+    width: 100%;
+    margin: 0;
+    float: none;
+  }
+}
+
+#homepage_text h1 .icon-3x {
+  display: block;
+  margin-bottom: 0.25em;
+  color: #ffa000;
+}
+
+h2.domain {
+  font-size: 2em;
+  line-height: 1;
+  color: #ccc;
+}
+
+article {
+  text-align: center;
+}
+
+#no-websites,
+#website-listing {
+  margin-bottom: 2em;
+}
+
+ul.websites {
+  padding: 0;
+  list-style: none;
+}
+
+.websites li {
+  font-family: "chunk";
+  font-size: 3em;
+  line-height: 1;
+  text-align: center;
+  margin: 1em 0;
+}
+
+.websites li a {
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+
+.websites li a:hover {
+  text-decoration: none;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+
+.field {
+  margin-bottom: 1em;
+}
+
+#achievements_list {
+  margin-bottom: 2em;
+}
+
+#achievements_list h1,
+#new_achievements h1,
+.notes h1 {
+  font-size: 2em;
+}
+
+#achievements_list ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+#achievements_list li {
+  margin-top: 1em;
+}
+
+#achievements_list li a {
+  font-size: 2em;
+  line-height: 1;
+  font-family: "chunk";
+}
+
+#achievements_list li a:hover {
+  text-decoration: none;
+}
+
+.description {
+  font-size: 1.5em;
+}
+
+.notes {
+  font-size: 1.25em;
+}
+
+.count,
+.award_form {
+  font-style: italic;
+}
+
+.award_form {
+  margin-top: 2em;
+}
+
+.award_form .award_to {
+  margin-top: 0.75em;
+}
+
+.awarded_to,
+.help {
+  margin-top: 3em;
+  border-top: 1px solid #ffc982;
+}
+
+.awarded_to h1,
+.help h1 {
+  display: inline-block;
+  position: relative;
+  top: -0.66em;
+  background: #fff;
+  padding: 0 0.5em;
+  line-height: 1;
+  margin-bottom: 0;
+}
+
+.awarded_to ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.awarded_to li {
+  font-size: 1.5em;
+  line-height: 1.5;
+}
+
+.awarded_to a.remove:hover {
+  text-decoration: none;
+}
+
+.help p {
+  text-align: left;
+}
+
+.button,
+input[type="submit"] {
+  font-family: "skolar";
+  -moz-box-shadow:inset 0px 1px 0px 0px #fce2c1;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #fce2c1;
+  box-shadow:inset 0px 1px 0px 0px #fce2c1;
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #fb9e25));
+  background:-moz-linear-gradient(top, #ffc477 5%, #fb9e25 100%);
+  background:-webkit-linear-gradient(top, #ffc477 5%, #fb9e25 100%);
+  background:-o-linear-gradient(top, #ffc477 5%, #fb9e25 100%);
+  background:-ms-linear-gradient(top, #ffc477 5%, #fb9e25 100%);
+  background:linear-gradient(to bottom, #ffc477 5%, #fb9e25 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc477', endColorstr='#fb9e25',GradientType=0);
+  background-color:#ffc477;
+  -moz-border-radius:6px;
+  -webkit-border-radius:6px;
+  border-radius:6px;
+  border:1px solid #eeb44f;
+  display:inline-block;
+  color:#ffffff;
+  padding:6px 24px;
+  text-decoration:none;
+    text-shadow:0px 1px 0px #cc9f52;
+}
+
+.button:hover,
+input[type="submit"]:hover {
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #fb9e25), color-stop(1, #ffc477));
+  background:-moz-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
+  background:-webkit-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
+  background:-o-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
+  background:-ms-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
+  background:linear-gradient(to bottom, #fb9e25 5%, #ffc477 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb9e25', endColorstr='#ffc477',GradientType=0);
+  background-color:#fb9e25;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.button:active,
+input[type="submit"]:active {
+  position:relative;
+  top:1px;
+}
+
+#account {
+  border-top: 1px solid #ffc982;
+  margin-top: 2em;
+  text-align: center;
+}
+
+#account.not-signed-in {
+  padding-bottom: 2em;
+  border-bottom: 1px solid #ffc982;
+}
+
+#account h1 {
+  display: inline-block;
+  position: relative;
+  top: -1em;
+  background: #fff;
+  padding: 0 0.5em;
+  font-size: 1.25em;
+  line-height: 1;
+}
+
+#account ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  overflow: auto;
+}
+
+#account li {
+  display: inline;
+  overflow: auto;
+}
+
+#account li a {
+  display: block;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  white-space: nowrap;
+}
+
+@media (min-width: 500px) {
+  #account li a {
+    display: inline-block;
+    margin-bottom: 0;
+    width: 15%;
+    margin: 0 1%;
+  }
+}
+
+#signout {
+  margin: 3em 0 0 0;
+  padding: 0;
+  border-top: 1px solid #ffc982;
+  text-align: center;
+}
+
+#signout a {
+  display: inline-block;
+  position: relative;
+  top: -1em;
+  line-height: 1;
+}
+
+footer {
+  margin-top: 2em;
+  text-align: center;
+}

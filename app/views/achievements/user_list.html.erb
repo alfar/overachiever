@@ -1,0 +1,17 @@
+<ul class="breadcrumbs">
+  <li><%= link_to "Websites", :controller => "websites", :action => "index" %></li>
+  <li><%= link_to @website.name, :controller => "websites", :action => "show", :id => @website.id %></li>
+</ul>
+<h1><%= @user %></h1>
+
+<section id="achievements_list">
+  <h1>Achievements</h1>
+  <ul>
+    <% @awards.each do |award| %>
+    <li>
+      <%= link_to award.achievement.name, :controller => "achievements", :action => "show", :id => award.achievement_id %>
+      <p><%= award.achievement.description %></p>
+    </li>
+    <% end %>
+  </ul>
+</section>

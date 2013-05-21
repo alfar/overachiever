@@ -1,0 +1,17 @@
+<% if @websites.empty? %>
+<section id="no-websites">
+  <h1>No Websites Yet</h1>
+  <p>You'll need to add a website to your account before you can start creating and tracking achievements. Each achievement exists for a specific website.</p>
+</section>
+<% else %>
+<section id="website-listing">
+  <h1>Your Websites</h1>
+  <ul class="websites">
+  <% @websites.each do |website| %>
+  <li><%= link_to website.name, website %></li>
+  <% end %>
+  </ul>
+</section>
+<% end %>
+
+<%= link_to "Create Website", new_website_path, :class => 'button' %>

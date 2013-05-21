@@ -1,0 +1,14 @@
+== Overachiever
+
+This is the source code for {overachiever.co}[http://overachiever.co], a website for creating, tracking, and awarding achievements, badges, and trophies. Feel free to download and use this code for your own projects. If you find any problems, {please let me know}[https://github.com/jefgodesky/overachiever/issues].
+
+
+== To Do
+
+* Allow a website to have multiple owners.
+* Set up calls to check a user's progress on an achievement she hasn't earned yet.
+* Create a dashboard on the website page, to see statistics relating to this website.
+
+== Notes
+
+Thank you for your interest in Overachiever. This is my first Ruby app, so I'm sure there's plenty of things I could have done better. If you see any of those, {please let me know}[https://github.com/jefgodesky/overachiever/issues]!

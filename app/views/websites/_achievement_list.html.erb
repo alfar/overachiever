@@ -1,0 +1,17 @@
+<% if achievements.empty? %>
+<section id="achievements_list">
+  <p><em><%= @website.name %> doesn't have any achievements yet.</em></p>
+</section>
+<% else %>
+<section id="achievements_list">
+  <h1>Achievements</h1>
+  <ul>
+  <% achievements.each do |achievement| %>
+    <li>
+      <%= link_to achievement.name, achievement %>
+      <p><%= achievement.description %></p>
+    </li>
+  <% end %>
+  </ul>
+</section>
+<% end %>

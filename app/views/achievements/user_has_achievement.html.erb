@@ -1,0 +1,19 @@
+<ul class="breadcrumbs">
+  <li><%= link_to "Websites", :controller => "websites", :action => "index" %></li>
+  <li><%= link_to @achievement.website.name, :controller => "websites", :action => "show", :id => @achievement.website.id %></li>
+</ul>
+<% if @awards > 0 %>
+<h1>Yes,</h1>
+<p><strong><%= params[:user] %></strong> does have this achievement:</p>
+<% else %>
+<h1>No,</h1>
+<p><strong><%= params[:user] %></strong> does not have this achievement:</p>
+<% end %>
+<section id="achievements_list">
+  <ul>
+    <li>
+      <%= link_to @achievement.name, @achievement %>
+      <p><%= @achievement.description %></p>
+    </li>
+  </ul>
+</section>
