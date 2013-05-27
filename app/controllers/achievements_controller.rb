@@ -9,7 +9,7 @@ class AchievementsController < ApplicationController
   # GET /achievements/1.json
   def show
     @achievement = Achievement.find(params[:id])
-    @awards = Award.find(:all, :conditions => { :achievement_id => @achievement.id } )
+    @awards = @achievement.awards
 
     respond_to do |format|
       format.html # show.html.erb
