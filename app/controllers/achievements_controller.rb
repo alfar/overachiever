@@ -104,9 +104,10 @@ class AchievementsController < ApplicationController
   end
   
   def user_list
-    @website = Website.find(params[:id])
+    @achievement = Achievement.find(params[:id])
     @user = params[:user]
     @awards = Award.all(:conditions => { :achievement_id => params[:id], :to => @user } )
+    
     respond_to do |format|
       format.html # user_list.html.erb
       format.json { render :json => {:user => @user, :achievements => @awards } }
