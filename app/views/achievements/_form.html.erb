@@ -29,6 +29,7 @@
   </div>
   <% if @achievement.website_id.blank? %>
   <div class="field">
+    <%= f.label :website_id %>
     <select name="website_id">
       <% @websites.each do |website| %>
       <option value="<%= website.id %>"><%= website.name %></option>
