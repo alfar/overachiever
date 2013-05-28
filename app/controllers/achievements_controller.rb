@@ -21,6 +21,7 @@ class AchievementsController < ApplicationController
   # GET /achievements/new.json
   def new
     @achievement = Achievement.new
+    @websites = Website.all(:conditions => { :owner => current_user.id } )
 
     respond_to do |format|
       format.html # new.html.erb

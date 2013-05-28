@@ -27,10 +27,17 @@
     <%= f.label :notes %>
     <%= f.text_area :notes %>
   </div>
+  <% if @achievement.website_id.blank? %>
   <div class="field">
-    <%= f.label :website_id %>
-    <%= f.number_field :website_id %>
+    <select name="website_id">
+      <% @websites.each do |website| %>
+      <option value="<%= website.id %>"><%= website.name %></option>
+      <% end %>
+    </select>
   </div>
+  <% else %>
+  <%= f.hidden_field :website_id, :value => @achievement.website_id %>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>
