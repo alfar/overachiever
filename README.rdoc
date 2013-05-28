@@ -5,6 +5,7 @@ This is the source code for {overachiever.co}[http://overachiever.co], a website
 
 == To Do
 
+* Separate counters and achievements. Example: One counter increments every time a user makes a comment, which can trigger separate achievements, like "First Comment", "Tenth Comment", and "One Hundred Comments". (Thanks, Arne Sostack!)
 * Allow a website to have multiple owners.
 * Set up calls to check a user's progress on an achievement she hasn't earned yet.
 * Create a dashboard on the website page, to see statistics relating to this website.
