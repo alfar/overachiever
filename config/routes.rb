@@ -8,10 +8,10 @@ Overachiever::Application.routes.draw do
   
   match "achievements/:id/award", :to => 'achievements#award'
   match "achievements/:id/award/:to/delete", :to => 'achievements#unaward'
-  match "achievements/:id/record/:user", :to => 'achievements#record'
-  match "achievements/:id/check/:user", :to =>'achievements#user_has_achievement'
+  match "achievements/:id/record/:user_id", :to => 'achievements#record'
+  match "achievements/:id/check/:user_id", :to =>'achievements#user_has_achievement'
   
-  match "websites/:id/:user", :to => 'achievements#user_list'
+  match "websites/:id/:user_id", :to => 'achievements#user_list'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

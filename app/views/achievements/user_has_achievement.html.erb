@@ -4,10 +4,10 @@
 </ul>
 <% if @awards > 0 %>
 <h1>Yes,</h1>
-<p><strong><%= params[:user] %></strong> does have this achievement:</p>
+<p><strong><%= @user_id %></strong> does have this achievement:</p>
 <% else %>
 <h1>No,</h1>
-<p><strong><%= params[:user] %></strong> does not have this achievement:</p>
+<p><strong><%= @user_id %></strong> does not have this achievement:</p>
 <% end %>
 <section id="achievements_list">
   <ul>

@@ -82,7 +82,7 @@ class AchievementsController < ApplicationController
   def award
     @achievement = Achievement.find(params[:id])
     notice = ""
-    params[:to].split(",").each do |to|
+    params[:user_id].split(",").each do |to|
       notice_item = @achievement.award(to.strip)
       notice.concat("<li>" << notice_item << "</li>")
     end
@@ -95,7 +95,7 @@ class AchievementsController < ApplicationController
   
   def unaward
     @achievement = Achievement.find(params[:id])
-    notice_text = @achievement.unaward(params[:to])
+    notice_text = @achievement.unaward(params[:user_id])
     
     respond_to do |format|
       format.html { redirect_to @achievement, notice: notice_text }
@@ -105,18 +105,19 @@ class AchievementsController < ApplicationController
   
   def user_list
     @website = Website.find(params[:id])
-    @user = params[:user]
-    @awards = @website.awards.where(:to => @user)
+    @user_id = params[:user_id]
+    @awards = @website.awards.where(:to => @user_id)
     
     respond_to do |format|
       format.html # user_list.html.erb
-      format.json { render :json => {:user => @user, :achievements => @awards } }
+      format.json { render :json => {:user => @user_id, :achievements => @awards } }
     end
   end
   
   def user_has_achievement
     @achievement = Achievement.find(params[:id])
-    @awards = Award.count(:conditions => { :achievement_id => params[:id], :to => params[:user] } )
+    @user_id = params[:user_id]
+    @awards = Award.count(:conditions => { :achievement_id => params[:id], :to => params[:user_id] } )
     
     respond_to do |format|
       format.html # user_has_achievement.html.erb
@@ -126,7 +127,7 @@ class AchievementsController < ApplicationController
   
   def record
     @achievement = Achievement.find(params[:id])
-    notice_text = @achievement.record(params[:user])
+    notice_text = @achievement.record(params[:user_id])
     
     respond_to do |format|
       format.html { redirect_to @achievement, notice: notice_text }
