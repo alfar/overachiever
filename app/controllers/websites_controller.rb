@@ -3,7 +3,7 @@ class WebsitesController < ApplicationController
   # GET /websites.json
   def index
     if signed_in?
-      @websites = Website.find(:all, :conditions => { :owner => current_user.id } )
+      @websites = Website.all(:conditions => { :owner => current_user.id } )
       respond_to do |format|
         format.html # index.html.erb
         format.json { render json: @websites }
