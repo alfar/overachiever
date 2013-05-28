@@ -106,7 +106,7 @@ class AchievementsController < ApplicationController
   def user_list
     @website = Website.find(params[:id])
     @user = params[:user]
-    @awards = Award.find_by_sql(["SELECT * FROM Achievements a1, Awards a2 WHERE a1.`id` = a2.`achievement_id` AND a1.`website_id` = ? AND a2.`to` = ?", @website.id, @user])
+    @awards = @website.awards.where(:to => @user)
     
     respond_to do |format|
       format.html # user_list.html.erb
