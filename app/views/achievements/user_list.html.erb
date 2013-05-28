@@ -1,11 +1,11 @@
 <ul class="breadcrumbs">
   <li><%= link_to "Websites", :controller => "websites", :action => "index" %></li>
-  <li><%= link_to @achievement.website.name, :controller => "websites", :action => "show", :id => @achievement.website.id %></li>
+  <li><%= link_to @website.name, :controller => "websites", :action => "show", :id => @website.id %></li>
 </ul>
 <h1><%= @user %></h1>
 
 <% if @awards.blank? %>
-<p><em><%= @user %> hasn't earned any achievements yet on <%= @achievement.website.name %>.</em></p>
+<p><em><%= @user %> hasn't earned any achievements yet on <%= @website.name %>.</em></p>
 <% else %>
 <section id="achievements_list">
   <h1>Achievements</h1>
