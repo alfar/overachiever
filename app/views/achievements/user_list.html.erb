@@ -4,6 +4,9 @@
 </ul>
 <h1><%= @user %></h1>
 
+<% if @awards.blank? %>
+<p><em><%= @user %> hasn't earned any achievements yet on <%= @website.name %>.</em></p>
+<% else %>
 <section id="achievements_list">
   <h1>Achievements</h1>
   <ul>
@@ -15,3 +18,4 @@
     <% end %>
   </ul>
 </section>
+<% end %>
