@@ -26,6 +26,7 @@ section {
   border-bottom: 1px solid #ffc982;
   padding-bottom: 0.25em;
   margin-bottom: 0.25em;
+  text-shadow: 0.02em 0.02em 0 #fff, 0.04em 0.04em 0 #edd9be;
 }
 
 #logo a {
@@ -312,6 +313,7 @@ input[type="submit"]:active {
   overflow: auto;
 }
 
+footer a.button,
 #account li a {
   display: block;
   padding: 0.5em;
@@ -320,11 +322,25 @@ input[type="submit"]:active {
 }
 
 @media (min-width: 500px) {
+  footer a.button,
   #account li a {
     display: inline-block;
     margin-bottom: 0;
-    width: 15%;
     margin: 0 1%;
+  }
+  
+  #account li a {
+    width: 15%;
+  }
+  
+  footer a.button {
+    width: 25%;
+  }
+}
+
+@media (min-width: 800px) {
+  footer a.button {
+    width: 20%;
   }
 }
 
