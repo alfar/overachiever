@@ -7,8 +7,8 @@ Overachiever::Application.routes.draw do
   match '/signout' => 'sessions#destroy', :as => :signout
   
   match "achievements/:id/award", :to => 'achievements#award'
-  match "achievements/:id/award/:to/delete", :to => 'achievements#unaward'
-  match "achievements/:id/record/:user_id", :to => 'achievements#record'
+  match "achievements/:id/award/:user_id", :to => 'achievements#award'
+  match "achievements/:id/award/:user_id/delete", :to => 'achievements#unaward'
   match "achievements/:id/check/:user_id", :to =>'achievements#user_has_achievement'
   
   match "websites/:id/:user_id", :to => 'achievements#user_list'

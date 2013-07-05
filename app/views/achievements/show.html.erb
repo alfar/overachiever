@@ -11,10 +11,6 @@
   <%= simple_format(@achievement.description) %>
 </section>
 
-<section class="count">
-  <p>A user is rewarded this achievement when she has <%= @achievement.record_count %> records.</p>
-</section>
-
 <% if (@achievement.website.owner == current_user.id) && (!@achievement.notes.empty?) %>
 <section class="notes">
   <h1>Notes</h1>
@@ -51,16 +47,9 @@
 
 <section class="help">
   <h1>Technical Stuff</h1>
-  <% if @achievement.record_count > 1 %>
-  <p>We'll award this achievement to a user when you've recorded <%= @achievement.record_count %> events. You can determine what counts; just send a request to this URL:</p>
+  <p>We'll award this achievement to a user when you send a request to this URL:</p>
   <p><code>http://overachiever.co/achievements/<%= @achievement.id %>/record/<strong>USER</strong>.json</code></p>
   <p><strong>user</strong> is determined by you. It should be a unique identifier for each of your website's users. Maybe that means an ID number, an email address, a screen handle, an IP address, or something else. Whatever you use on your website to uniquely identify your users, we'll use it, too.</p>
-  <p>With this URL, you can focus on what are the conditions that count as activity towards this achievement; we'll handle tracking when each user has done it enough times to earn the achievement.</p>
-  <% else %>
-  <p>We'll award this achievement to a user when send a request to this URL:</p>
-  <p><code>http://overachiever.co/achievements/<%= @achievement.id %>/record/<strong>USER</strong>.json</code></p>
-  <p><strong>user</strong> is determined by you. It should be a unique identifier for each of your website's users. Maybe that means an ID number, an email address, a screen handle, an IP address, or something else. Whatever you use on your website to uniquely identify your users, we'll use it, too.</p>
-  <% end %>
   <p>You can use this URL to get a list of the users who have earned this achievement:</p>
   <p><code>http://overachiever.co/achievements/<%= @achievement.id %>.json</code></p>
   <p>You can check to see if an individual user has earned this award by checking this URL:</p>

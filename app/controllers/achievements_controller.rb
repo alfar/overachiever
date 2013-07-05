@@ -124,14 +124,4 @@ class AchievementsController < ApplicationController
       format.json { render json: (@awards > 0) }
     end
   end
-  
-  def record
-    @achievement = Achievement.find(params[:id])
-    notice_text = @achievement.record(params[:user_id])
-    
-    respond_to do |format|
-      format.html { redirect_to @achievement, notice: notice_text }
-      format.json { head :no_content }
-    end
-  end
 end
