@@ -21,15 +21,4 @@ class Achievement < ActiveRecord::Base
     @unaward.destroy
     return "Achievement removed for " + user_id
   end
-  
-  def record(user_id)
-    size = Record.count(:conditions => { :achievement_id => self.id, :user => user_id } )
-    if (size + 1) >= self.record_count
-      return self.award(user_id)
-    else
-      @record = Record.new(:achievement_id => self.id, :user => user_id)
-      @record.save
-      return "Activity recorded for " + user_id
-    end
-  end
 end
