@@ -1,5 +1,5 @@
 class Achievement < ActiveRecord::Base
-  attr_accessible :description, :name, :record_count, :notes, :website_id
+  attr_accessible :description, :name, :notes, :website_id
   belongs_to :website
   has_many :awards, :uniq => true
   has_many :records
