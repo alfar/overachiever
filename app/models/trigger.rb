@@ -37,7 +37,11 @@ class Trigger < ActiveRecord::Base
     case object_type
     when "Achievement"
       achievement = Achievement.find(object)
-      return achievement.name
+      if achievement
+        return achievement.name
+      else
+        return "Undefined"
+      end
     else
       return "Undefined"
     end
