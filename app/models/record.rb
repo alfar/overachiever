@@ -1,4 +1,4 @@
 class Record < ActiveRecord::Base
-  attr_accessible :achievement_id, :user
-  belongs_to :achievement
+  attr_accessible :tracker_id, :user, :counter
+  belongs_to :tracker
 end

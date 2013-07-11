@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130705202052) do
+ActiveRecord::Schema.define(:version => 20130710193732) do
 
   create_table "accounts", :force => true do |t|
     t.string   "provider"
@@ -38,10 +38,28 @@ ActiveRecord::Schema.define(:version => 20130705202052) do
   end
 
   create_table "records", :force => true do |t|
-    t.integer  "achievement_id"
     t.string   "user"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "tracker_id"
+    t.integer  "counter"
+  end
+
+  create_table "trackers", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "website_id"
+  end
+
+  create_table "triggers", :force => true do |t|
+    t.integer  "tracker_id"
+    t.integer  "threshold"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "action"
+    t.integer  "object"
   end
 
   create_table "users", :force => true do |t|

@@ -2,6 +2,8 @@ Overachiever::Application.routes.draw do
 
   resources :websites
   resources :achievements
+  resources :trackers
+  resources :triggers
 
   match '/auth/:provider/callback', :to => 'sessions#create'
   match '/signout' => 'sessions#destroy', :as => :signout
@@ -10,6 +12,9 @@ Overachiever::Application.routes.draw do
   match "achievements/:id/award/:user_id", :to => 'achievements#award'
   match "achievements/:id/award/:user_id/delete", :to => 'achievements#unaward'
   match "achievements/:id/check/:user_id", :to =>'achievements#user_has_achievement'
+  
+  match "trackers/:id/record/:user_id", :to => 'trackers#record'
+  match "trackers/:id/reset/:user_id", :to =>'trackers#reset'
   
   match "websites/:id/:user_id", :to => 'achievements#user_list'
 

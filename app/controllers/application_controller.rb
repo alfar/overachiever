@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protected
+  helper_method :current_user, :signed_in?, :empty_accounts
   
   def current_user
     @current_user ||= User.find_by_id(session[:user_id])
@@ -8,8 +9,6 @@ class ApplicationController < ActionController::Base
   def signed_in?
     !!current_user
   end
-
-  helper_method :current_user, :signed_in?, :empty_accounts
 
   def current_user=(user)
     @current_user = user
