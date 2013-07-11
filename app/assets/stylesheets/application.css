@@ -14,31 +14,77 @@
  */
 
 body {
-  padding: 5%;
+  padding: 0;
 }
 
-section {
-  margin-top: 1em;
+section,
+table {
+  margin: 2em 0 2em 0;
+  width: 100%;
+}
+
+th {
+  padding-right: 1em;
+  border-bottom: 1px solid #f2eadf;
+  vertical-align: bottom;
+}
+
+td {
+  text-align: center;
+  padding: 0.5em 1em 0.5em 0;
+}
+
+.even td {
+  background: #f9f7f4;
+}
+
+.collapsible {
+  display: none;
+  visibility: hidden;
+}
+
+header, article, aside, footer {
+  padding: 0 5%;
+}
+
+header {
+  background: #f2eadf;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSI3NiUiIHN0b3AtY29sb3I9IiNmMmVhZGYiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI5OSUiIHN0b3AtY29sb3I9IiNkYmNmYmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top,  #f2eadf 76%, #dbcfbf 99%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(76%,#f2eadf), color-stop(99%,#dbcfbf));
+  background: -webkit-linear-gradient(top,  #f2eadf 76%,#dbcfbf 99%);
+  background: -o-linear-gradient(top,  #f2eadf 76%,#dbcfbf 99%);
+  background: -ms-linear-gradient(top,  #f2eadf 76%,#dbcfbf 99%);
+  background: linear-gradient(to bottom,  #f2eadf 76%,#dbcfbf 99%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2eadf', endColorstr='#dbcfbf',GradientType=0 );
+  border-bottom: 1px solid #c9b293;
+  overflow: auto;
+  margin-bottom: 2em;
+}
+
+header .button {
+  position: absolute;
+  top: 0.75em;
+  right: 0.75em;
 }
 
 #logo {
-  margin-top: 0.25  em;
-  border-bottom: 1px solid #ffc982;
-  padding-bottom: 0.25em;
-  margin-bottom: 0.25em;
-  text-shadow: 0.02em 0.02em 0 #fff, 0.04em 0.04em 0 #edd9be;
+  float: left;
+  text-align: left;
+  margin: 0 0.25em 0 -0.5em;
+  padding: 0.25em 0;
+  text-shadow: 0.05em 0.05em 0 #f2eadf, 0.1em 0.1em 0 #dbcfbf;
 }
 
 #logo a {
   color: #ff9000;
   text-decoration: none;
   line-height: 1;
-  text-align: center;
   display: block;
   width: 100%;
   background: url(/assets/laurel-left.png) no-repeat top left;
-  background-size: 11%;
-  padding-left: 2%;
+  background-size: contain;
+  padding-left: 0.3em;
 }
 
 #logo a:hover {
@@ -46,7 +92,6 @@ section {
 }
 
 h1 {
-  text-align: center;
   line-height: 1;
 }
 
@@ -69,6 +114,11 @@ ul.breadcrumbs li:after {
   content: " » ";
 }
 
+.frontpage #logo {
+  float: none;
+  margin: 1em auto;
+}
+
 #homepage_text {
   overflow: auto;
   padding-top: 1em;
@@ -85,34 +135,21 @@ ul.breadcrumbs li:after {
   line-height: 1.2;
 }
 
-@media (min-width: 500px) {
-  #homepage_text section {
-    width: 28%;
-    margin: 0 2%;
-    float: left;
-  }
-  
-  #homepage_text section.pitch {
-    width: 100%;
-    margin: 0;
-    float: none;
-  }
+#homepage_text h1 {
+  text-align: center;
 }
 
 #homepage_text h1 .icon-3x {
-  display: block;
-  margin-bottom: 0.25em;
+  font-size: 1.5em;
+  margin-right: 0.25em;
+  vertical-align: middle;
   color: #ffa000;
 }
 
 h2.domain {
   font-size: 2em;
   line-height: 1;
-  color: #ccc;
-}
-
-article {
-  text-align: center;
+  color: #dbcfbf;
 }
 
 #no-websites,
@@ -120,61 +157,64 @@ article {
   margin-bottom: 2em;
 }
 
-ul.websites {
-  padding: 0;
+.websites,
+.websites ul {
+  padding: 0 0 0 30px;
   list-style: none;
 }
 
-.websites li {
-  font-family: "chunk";
-  font-size: 3em;
-  line-height: 1;
-  text-align: center;
-  margin: 1em 0;
+.websites img {
+  float: left;
+  margin: 0.5em 0 0 0;
+  width: 16px;
+  height: 16px;
 }
 
-.websites li a {
-  transition: all 0.5s;
-  -webkit-transition: all 0.5s;
-}
-
-.websites li a:hover {
-  text-decoration: none;
-  transition: all 0.5s;
-  -webkit-transition: all 0.5s;
+.websites h1 {
+  margin-bottom: 0;
+  padding-left: 30px;
 }
 
 .field {
   margin-bottom: 1em;
 }
 
-#achievements_list {
-  margin-bottom: 2em;
+#achievements_list,
+#trackers_list {
+  margin: 4em 0;
 }
 
 #achievements_list h1,
+#trackers_list h1,
 #new_achievements h1,
+.awarded_to h1,
+.triggers h1,
+.help h1,
 .notes h1 {
-  font-size: 2em;
+  border-bottom: 1px solid #f2eadf;
 }
 
-#achievements_list ul {
+#achievements_list ul,
+#trackers_list ul {
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
-#achievements_list li {
+#achievements_list li,
+#trackers_list li {
   margin-top: 1em;
 }
 
-#achievements_list li a {
+#achievements_list li a,
+#trackers_list li a {
   font-size: 2em;
   line-height: 1;
   font-family: "chunk";
 }
 
-#achievements_list li a:hover {
+#achievements_list li a:hover,
+#trackers_list li a:hover {
   text-decoration: none;
 }
 
@@ -199,23 +239,6 @@ ul.websites {
   margin-top: 0.75em;
 }
 
-.awarded_to,
-.help {
-  margin-top: 3em;
-  border-top: 1px solid #ffc982;
-}
-
-.awarded_to h1,
-.help h1 {
-  display: inline-block;
-  position: relative;
-  top: -0.66em;
-  background: #fff;
-  padding: 0 0.5em;
-  line-height: 1;
-  margin-bottom: 0;
-}
-
 .awarded_to ul {
   padding: 0;
   margin: 0;
@@ -235,12 +258,27 @@ ul.websites {
   text-align: left;
 }
 
+.records .name {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.triggers .action {
+  display: block;
+  font-style: italic;
+}
+
+.buttons {
+  white-space: nowrap;
+}
+
 .button,
 input[type="submit"] {
   font-family: "skolar";
   -moz-box-shadow:inset 0px 1px 0px 0px #fce2c1;
   -webkit-box-shadow:inset 0px 1px 0px 0px #fce2c1;
   box-shadow:inset 0px 1px 0px 0px #fce2c1;
+  box-shadow: 0 0 0.25em rgba(0,0,0,0.25);
   background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #fb9e25));
   background:-moz-linear-gradient(top, #ffc477 5%, #fb9e25 100%);
   background:-webkit-linear-gradient(top, #ffc477 5%, #fb9e25 100%);
@@ -257,7 +295,7 @@ input[type="submit"] {
   color:#ffffff;
   padding:6px 24px;
   text-decoration:none;
-    text-shadow:0px 1px 0px #cc9f52;
+  text-shadow:0px 1px 0px #cc9f52;
 }
 
 .button:hover,
@@ -280,9 +318,32 @@ input[type="submit"]:active {
   top:1px;
 }
 
+.collapsiblebutton span {
+  display: none;
+  visibility: hidden;
+}
+
+hgroup {
+  margin-bottom: 2em;
+}
+
+hgroup h1 {
+  display: inline-block;
+}
+
+.collapsiblebutton {
+  padding: 2px 8px;
+}
+
+hgroup .collapsiblebutton {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0.75em 0 0 1em;
+}
+
 #account {
   border-top: 1px solid #ffc982;
-  margin-top: 2em;
+  margin: 3em 5% 0 5%;
   text-align: center;
 }
 
@@ -321,7 +382,75 @@ footer a.button,
   white-space: nowrap;
 }
 
+#signout {
+  margin: 3em 5% 0 5%;
+  padding: 0;
+  border-top: 1px solid #dbcfbf;
+  text-align: center;
+  clear: both;
+}
+
+#signout a {
+  display: inline-block;
+  position: relative;
+  top: -1em;
+  line-height: 1;
+}
+
+footer {
+  margin: 2em 0 4em 0;
+  text-align: center;
+}
+
 @media (min-width: 500px) {
+  body {
+    background: url(/assets/laurel-bg.png) no-repeat 0 4em;
+  }
+  
+  .frontpage body {
+    background: none;
+  }
+  
+  th {
+    font-size: 1.25em;
+  }
+  
+  .collapsible {
+    display: block;
+    visibility: visible;
+  }
+  
+  th.collapsible,
+  td.collapsible {
+    display: table-cell;
+  }
+  
+  .collapsiblebutton {
+    padding: 6px 24px;
+  }
+
+  .collapsiblebutton span {
+    display: inline;
+    visibility: visible;
+  }
+  
+  .frontpage #logo {
+    margin: auto;
+    text-shadow: 0.015em 0.015em 0 #f2eadf, 0.05em 0.05em 0 #dbcfbf;
+  }
+
+  #homepage_text section {
+    width: 28%;
+    margin: 0 2%;
+    float: left;
+  }
+  
+  #homepage_text h1 .icon-3x {
+    display: block;
+    margin-bottom: 0.25em;
+    font-size: 2em;
+  }
+  
   footer a.button,
   #account li a {
     display: inline-block;
@@ -333,32 +462,32 @@ footer a.button,
     width: 15%;
   }
   
+  #achievements_list {
+    margin-right: 6%;
+  }
+  
   footer a.button {
     width: 25%;
   }
 }
 
 @media (min-width: 800px) {
+  th {
+    font-size: 1.5em;
+  }
+  
+  #achievements_list,
+  #trackers_list {
+    width: 44%;
+    float: left;
+    margin: 0 0 4em 0;
+  }
+  
+  #achievements_list {
+    margin-right: 6%;
+  }
+
   footer a.button {
     width: 20%;
   }
-}
-
-#signout {
-  margin: 3em 0 0 0;
-  padding: 0;
-  border-top: 1px solid #ffc982;
-  text-align: center;
-}
-
-#signout a {
-  display: inline-block;
-  position: relative;
-  top: -1em;
-  line-height: 1;
-}
-
-footer {
-  margin-top: 2em;
-  text-align: center;
 }

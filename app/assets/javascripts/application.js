@@ -16,5 +16,6 @@
 //= require_tree .
 
 $(document).ready(function() {
-  $("#logo").fitText(0.7);
+  $(".frontpage #logo").fitText(0.7);
+  $("tr:even").addClass("even");
 });
