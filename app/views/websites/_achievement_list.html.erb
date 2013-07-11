@@ -1,17 +1,14 @@
+<h1>Achievements</h1>
 <% if achievements.empty? %>
-<section id="achievements_list">
-  <p><em><%= @website.name %> doesn't have any achievements yet.</em></p>
-</section>
+<p><em><%= @website.name %> doesn't have any achievements yet.</em></p>
 <% else %>
-<section id="achievements_list">
-  <h1>Achievements</h1>
-  <ul>
-  <% achievements.each do |achievement| %>
-    <li>
-      <%= link_to achievement.name, achievement %>
-      <p><%= achievement.description %></p>
-    </li>
-  <% end %>
-  </ul>
-</section>
+<ul>
+<% achievements.each do |achievement| %>
+  <li>
+    <%= link_to achievement.name, achievement %>
+    <p><%= achievement.description %></p>
+  </li>
 <% end %>
+</ul>
+<% end %>
+<%= link_to raw('<i class="icon-plus"></i> <span>Add Achievement</span>'), { :controller => "achievements", :action => "new", :website => @website }, :class => "button" %>

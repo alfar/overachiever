@@ -45,13 +45,41 @@
   <% end %>
 </section>
 
-<section class="help">
-  <h1>Technical Stuff</h1>
-  <p>We'll award this achievement to a user when you send a request to this URL:</p>
-  <p><code>http://overachiever.co/achievements/<%= @achievement.id %>/record/<strong>USER</strong>.json</code></p>
-  <p><strong>user</strong> is determined by you. It should be a unique identifier for each of your website's users. Maybe that means an ID number, an email address, a screen handle, an IP address, or something else. Whatever you use on your website to uniquely identify your users, we'll use it, too.</p>
-  <p>You can use this URL to get a list of the users who have earned this achievement:</p>
-  <p><code>http://overachiever.co/achievements/<%= @achievement.id %>.json</code></p>
-  <p>You can check to see if an individual user has earned this award by checking this URL:</p>
-  <p><code>http://overachiever.co/achievements/<%= @achievement.id %>/check/<strong>USER</strong>.json</code></p>
+<section class="triggers">
+  <h1>Triggers</h1>
+  <p>You can <%= link_to "create trackers for \"" + @achievement.website.name + "\"", { :controller => "trackers", :action => "new", :website => @achievement.website } %> to keep track of user activity on your site. Then, you can attach triggers to your trackers to award achievements to users who pass a threshold that you define &mdash; or take away achievements under similar conditions.</p>
+  <% if !@triggers_award.empty? %>
+  <p><em>The following triggers award this achievement:</em></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Tracker</th>
+        <th>Threshold</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @triggers_award.each do |trigger| %>
+      <td><%= link_to trigger.tracker.name, trigger.tracker %></td>
+      <td><%= trigger.threshold %></td>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+  <% if !@triggers_unaward.empty? %>
+  <p><em>The following triggers take this achievement away:</em></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Tracker</th>
+        <th>Threshold</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @triggers_unaward.each do |trigger| %>
+      <td><%= link_to trigger.tracker.name, trigger.tracker %></td>
+      <td><%= trigger.threshold %></td>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
 </section>

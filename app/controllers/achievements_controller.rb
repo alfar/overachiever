@@ -10,7 +10,9 @@ class AchievementsController < ApplicationController
   def show
     @achievement = Achievement.find(params[:id])
     @awards = @achievement.awards
-
+    @triggers_award = Trigger.all(:conditions => { :action => 1, :object => @achievement.id })
+    @triggers_unaward = Trigger.all(:conditions => { :action => 0, :object => @achievement.id })
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => { @achievement.id => @achievement, :awarded => @awards } }
@@ -22,6 +24,10 @@ class AchievementsController < ApplicationController
   def new
     @achievement = Achievement.new
     @websites = Website.all(:conditions => { :owner => current_user.id } )
+    
+    if (params[:website])
+      @achievement.website_id = params[:website]
+    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -107,10 +113,11 @@ class AchievementsController < ApplicationController
     @website = Website.find(params[:id])
     @user_id = params[:user_id]
     @awards = @website.awards.where(:to => @user_id)
+    @records = @website.records.where(:user => @user_id)
     
     respond_to do |format|
       format.html # user_list.html.erb
-      format.json { render :json => {:user => @user_id, :achievements => @awards } }
+      format.json { render :json => {:user => @user_id, :achievements => @awards, :records => @records } }
     end
   end
   

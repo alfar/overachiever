@@ -1,5 +1,6 @@
-<h1>New achievement</h1>
+<h1>Add an Achievement</h1>
+<% if @achievement.website_id %>
+<p>To <%= link_to @achievement.website.name, @achievement.website %></p>
+<% end %>
 
 <%= render 'form' %>
-
-<%= link_to 'Back', achievements_path %>

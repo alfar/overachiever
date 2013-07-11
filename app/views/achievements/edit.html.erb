@@ -1,4 +1,7 @@
-<h1>Edit the<br/>&ldquo;<%= @achievement.name %>&rdquo;<br/>Achievement</h1>
+<h1>Edit the &ldquo;<%= @achievement.name %>&rdquo; Achievement</h1>
+<% if @achievement.website_id %>
+<p>For <%= link_to @achievement.website.name, @achievement.website %></p>
+<% end %>
 
 <%= render 'form' %>
 

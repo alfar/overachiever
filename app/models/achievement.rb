@@ -9,7 +9,6 @@ class Achievement < ActiveRecord::Base
     if @awards.blank?
       @award = Award.new(:achievement_id => self.id, :to => user_id)
       @award.save
-      Record.destroy_all(:achievement_id => self.id, :user => user_id)
       return "Achievement awarded to " + user_id
     else
       return "Achievement already awarded to " + user_id

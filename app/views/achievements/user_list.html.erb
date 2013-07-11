@@ -4,11 +4,11 @@
 </ul>
 <h1><%= @user_id %></h1>
 
-<% if @awards.blank? %>
-<p><em><%= @user_id %> hasn't earned any achievements yet on <%= @website.name %>.</em></p>
-<% else %>
 <section id="achievements_list">
   <h1>Achievements</h1>
+  <% if @awards.blank? %>
+  <p><em><%= @user_id %> hasn't earned any achievements yet on <%= @website.name %>.</em></p>
+  <% else %>
   <ul>
     <% @awards.each do |award| %>
     <li>
@@ -17,5 +17,29 @@
     </li>
     <% end %>
   </ul>
-</section>
 <% end %>
+</section>
+
+<section id="trackers_list">
+  <h1>Trackers</h1>
+  <% if @records.blank? %>
+  <p><em>We haven't recorded activity from <%= @user_id %> on <%= @website.name %> yet.</em></p>
+  <% else %>
+  <table>
+    <thead>
+      <tr>
+        <th>Tracker</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @records.each do |record| %>
+      <tr>
+        <td><%= link_to record.tracker.name, :controller => "trackers", :action => "show", :id => record.tracker_id %></td>
+        <td><%= record.counter %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+</section>
