@@ -80,10 +80,11 @@ class TrackersController < ApplicationController
   # DELETE /trackers/1.json
   def destroy
     @tracker = Tracker.find(params[:id])
+    website = @tracker.website
     @tracker.destroy
 
     respond_to do |format|
-      format.html { redirect_to trackers_url }
+      format.html { redirect_to website }
       format.json { head :no_content }
     end
   end
