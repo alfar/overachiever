@@ -1,0 +1,6 @@
+<h1>Add a Tracker</h1>
+<% if @tracker.website_id %>
+<p>To <%= link_to @tracker.website.name, @tracker.website %></p>
+<% end %>
+
+<%= render 'form' %>

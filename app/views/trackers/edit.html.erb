@@ -1,0 +1,9 @@
+<h1>Edit the &ldquo;<%= @tracker.name %>&rdquo; Tracker</h1>
+<% if @tracker.website_id %>
+<p>For <%= link_to @tracker.website.name, @tracker.website %></p>
+<% end %>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @tracker, :class => "button" %>
+<%= link_to 'Back', { :controller => "websites", :action => "index" }, :class => "button" %>

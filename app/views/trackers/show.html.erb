@@ -1,0 +1,65 @@
+<ul class="breadcrumbs">
+  <li><%= link_to "Websites", :controller => "websites", :action => "index" %></li>
+  <li><%= link_to @tracker.website.name, :controller => "websites", :action => "show", :id => @tracker.website.id %></li>
+</ul>
+<h1><%= @tracker.name %></h1>
+
+<%= link_to raw('<i class="icon-pencil"></i> Edit'), edit_tracker_path(@tracker), :class => "button" %>
+<%= link_to raw('<i class="icon-remove"></i> Delete'), @tracker, method: :delete, data: { confirm: 'Are you sure?' }, :class => "button" %>
+
+<section class="description">
+  <%= simple_format(@tracker.description) %>
+</section>
+
+<section class="records">
+  <h1>Records</h1>
+  <% if @records.empty? %>
+  <p><em>This tracker has not recorded any activity yet.</em></p>
+  <% else %>
+  <table>
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Counter</th>
+        <th>Delete Record</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @records.each do |record| %>
+      <tr>
+        <td class="name"><%= link_to record.user, "/websites/" + @tracker.website_id.to_s + "/" + record.user %></td>
+        <td class="int"><%= record.counter %></td>
+        <td class="icon"><%= link_to raw('<i class="icon-remove"></i>'), "/trackers/" + @tracker.id.to_s + "/reset/" + record.user, data: { confirm: 'Are you sure?' }, :class => "remove" %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <% end %>
+</section>
+
+<section class="triggers">
+  <h1>Triggers</h1>
+  <% if @triggers.empty? %>
+  <p><em>This tracker does not have any triggers yet.</em></p>
+  <% else %>
+  <table>
+    <thead>
+      <tr>
+        <th>Threshold</th>
+        <th>Action</th>
+        <th />
+      </tr>
+    </thead>
+    <tbody>
+      <% @triggers.each do |trigger| %>
+      <tr>
+        <td><%= trigger.threshold %></td>
+        <td><span class="action"><%= trigger.action_to_s %>:</span> <%= link_to trigger.object_name, trigger.object_link %></td>
+        <td class="buttons"><%= link_to raw('<i class="icon-pencil"></i> <span>Edit</span>'), edit_trigger_path(trigger), :class => "collapsiblebutton button" %>&nbsp;<%= link_to raw('<i class="icon-remove"></i> <span>Delete</span>'), trigger, method: :delete, data: { confirm: 'Are you sure?' }, :class => "collapsiblebutton button" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+  <%= link_to raw('<i class="icon-plus"></i> Add Trigger'), "/triggers/new?tracker=" + @tracker.id.to_s, :class => "button" %>
+</section>

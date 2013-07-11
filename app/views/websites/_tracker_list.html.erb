@@ -1,0 +1,14 @@
+<h1>Trackers</h1>
+<% if trackers.empty? %>
+<p><em><%= @website.name %> doesn't have any trackers yet.</em></p>
+<% else %>
+<ul>
+<% trackers.each do |tracker| %>
+  <li>
+    <%= link_to tracker.name, tracker %>
+    <p><%= tracker.description %></p>
+  </li>
+<% end %>
+</ul>
+<% end %>
+<%= link_to raw('<i class="icon-plus"></i> <span>Add Tracker</span>'), { :controller => "trackers", :action => "new", :website => @website }, :class => "button" %>
