@@ -2,16 +2,24 @@
 <section id="no-websites">
   <h1>No Websites Yet</h1>
   <p>You'll need to add a website to your account before you can start creating and tracking achievements. Each achievement exists for a specific website.</p>
+  <%= link_to raw('<i class="icon-plus"></i> Add Website'), new_website_path, :class => "button" %>
 </section>
 <% else %>
 <section id="website-listing">
-  <h1>Your Websites</h1>
+  <hgroup>
+    <h1>Your Websites</h1>
+    <%= link_to raw('<i class="icon-plus"></i> <span>Add Website</span>'), new_website_path, :class => "button collapsiblebutton" %>
+  </hgroup>
   <ul class="websites">
   <% @websites.each do |website| %>
-  <li><%= link_to website.name, website %></li>
+  <li>
+    <img src="http://g.etfv.co/http://<%= website.domain %>" alt="<%= website.name %>" width="16" height="16" />
+    <h1><%= link_to website.name, website, :class => "title" %></h1>
+    <ul>
+      <li><%= link_to website.domain, website %></li>
+    </ul>
+  </li>
   <% end %>
   </ul>
 </section>
 <% end %>
-
-<%= link_to "Create Website", new_website_path, :class => 'button' %>
