@@ -1,0 +1,62 @@
+<%= form_for(@trigger) do |f| %>
+  <% if @trigger.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@trigger.errors.count, "error") %> prohibited this trigger from being saved:</h2>
+
+      <ul>
+      <% @trigger.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if @trigger.tracker_id.blank? %>
+  <div class="field">
+    <%= f.label :tracker_id %>
+    <select name="tracker_id">
+      <% @websites.each do |website| %>
+      <optgroup label="<%= website.name %>">
+        <% website.trackers.each do |tracker| %>
+        <option value="<%= tracker.id %>"><%= tracker.name %></option>
+        <% end %>
+      </optgroup>
+      <% end %>
+    </select>
+  </div>
+  <% else %>
+  <%= f.hidden_field :tracker_id, :value => @trigger.tracker_id %>
+  <% end %>
+  <div class="field">
+    <%= f.label :threshold %>
+    <%= f.number_field :threshold, :min => 1 %>
+  </div>
+  <div class="field">
+    <%= f.label :action %>
+    <select name="trigger[action]" id="trigger_action">
+      <option value="0">Unaward an achievement</option>
+      <option value="1" selected="selected">Award an achievement</option>
+    </select>
+  </div>
+  <% if @trigger.object.blank? || !@trigger.new_record? %>
+  <div class="field">
+    <%= f.label :object %>
+    <select name="trigger[object]" id="trigger_object">
+      <% @websites.each do |website| %>
+      <optgroup label="<%= website.name %> - Achievements">
+        <% website.achievements.each do |achievement| %>
+        <option value="<%= achievement.id %>"><%= achievement.name %></option>
+        <% end %>
+      </optgroup>
+      <% end %>
+    </select>
+  </div>
+  <% else %>
+    <%= f.label :object %>
+    <%= f.hidden_field :object, :value => @achievement.id %>
+    <strong>Achievement:</strong> <%= link_to @achievement.name, @achievement %>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
