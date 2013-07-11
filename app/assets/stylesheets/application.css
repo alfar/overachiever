@@ -43,6 +43,10 @@ td {
   visibility: hidden;
 }
 
+.error {
+  color: #c00;
+}
+
 header, article, aside, footer {
   padding: 0 5%;
 }

@@ -54,7 +54,7 @@
       <% @triggers.each do |trigger| %>
       <tr>
         <td><%= trigger.threshold %></td>
-        <td><% if trigger.object_name == "Undefined" %>Undefined<% else %><span class="action"><%= trigger.action_to_s %>:</span> <%= link_to trigger.object_name, trigger.object_link %><% end %></td>
+        <td><% if trigger.object_name == "Undefined" %><strong class="error">Undefined</strong><% else %><span class="action"><%= trigger.action_to_s %>:</span> <%= link_to trigger.object_name, trigger.object_link %><% end %></td>
         <td class="buttons"><%= link_to raw('<i class="icon-pencil"></i> <span>Edit</span>'), edit_trigger_path(trigger), :class => "collapsiblebutton button" %>&nbsp;<%= link_to raw('<i class="icon-remove"></i> <span>Delete</span>'), trigger, method: :delete, data: { confirm: 'Are you sure?' }, :class => "collapsiblebutton button" %></td>
       </tr>
       <% end %>
