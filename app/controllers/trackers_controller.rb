@@ -19,7 +19,7 @@ class TrackersController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @tracker }
+      format.json { render :json => { @tracker.id => @tracker, :records => @records } }
     end
   end
 
