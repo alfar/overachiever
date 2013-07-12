@@ -11,6 +11,10 @@
   <%= simple_format(@achievement.description) %>
 </section>
 
+<section class="id">
+  <p><strong>ID:</strong> <%= @achievement.id %></p>
+</section>
+
 <% if (@achievement.website.owner == current_user.id) && (!@achievement.notes.empty?) %>
 <section class="notes">
   <h1>Notes</h1>

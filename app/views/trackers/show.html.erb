@@ -11,6 +11,10 @@
   <%= simple_format(@tracker.description) %>
 </section>
 
+<section class="id">
+  <p><strong>ID:</strong> <%= @achievement.id %></p>
+</section>
+
 <section class="records">
   <h1>Records</h1>
   <% if @records.empty? %>
