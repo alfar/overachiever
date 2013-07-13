@@ -346,6 +346,7 @@ hgroup .collapsiblebutton {
 }
 
 #account {
+  clear: both;
   border-top: 1px solid #ffc982;
   margin: 3em 5% 0 5%;
   text-align: center;
