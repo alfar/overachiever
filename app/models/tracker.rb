@@ -9,6 +9,7 @@ class Tracker < ActiveRecord::Base
     if @records.empty?
       @record = Record.new(:tracker_id => self.id, :user => user_id, :counter => 1)
       @record.save
+      check_triggers(@record)
     else
       @records.each do |record|
         record.increment!(:counter)
